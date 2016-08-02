@@ -1,0 +1,18 @@
+#phpredis扩展安装
+
+#下载
+wget -c https://github.com/phpredis/phpredis/archive/php7.zip
+
+#编译安装
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config
+make
+make install
+
+#编译成功
+Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20151012/
+
+#配置php文件
+vim /usr/local/php/etc/php.ini
+中加入
+extension=redis.so

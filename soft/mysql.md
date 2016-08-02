@@ -44,13 +44,39 @@ make
 安装
 make install 
 
-5、初始化mysql数据库
-cd /usr/local/mysql   
-scripts/mysql_install_db --user=mysql --datadir=/data/mysqldb  
-
-6、复制mysql服务启动配置文件
-cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf
-
-7、改变mysql数据文件夹的属性
+5、改变mysql数据文件夹的属性
 chown -R mysql:mysql /usr/local/mysql
 chown -R mysql:mysql /var/data/mysql
+
+6、初始化mysql数据库
+cd /usr/local/mysql   
+scripts/mysql_install_db --user=mysql --datadir=/var/data/mysql 
+
+7、复制mysql服务启动配置文件
+cp /usr/local/mysql/support-files/my-medium.cnf /etc/my.cnf
+注：如果/etc/my.cnf文件存在，则覆盖。
+
+8、复制mysql服务启动脚本及加入PATH路径
+cp support-files/mysql.server /etc/init.d/mysqld   
+  
+vim /etc/profile   
+  
+      PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH  
+  
+      export PATH  
+  
+source /etc/profile
+
+9、启动mysql服务并加入开机自启动(可选这个步骤，以后可以自己启动的)
+service mysqld start 
+chkconfig --level 35 mysqld on
+
+10、检查mysql服务是否启动
+netstat -tulnp | grep 3306   
+mysql -u root -p   
+
+11、修改MySQL用户root的密码
+mysqladmin -u root password '123456'  
+注：也可运行安全设置脚本，修改MySQL用户root的密码，同时可禁止root远程连接，移除test数据库和匿名用户。
+/usr/local/mysql/bin/mysql_secure_installation 
+
