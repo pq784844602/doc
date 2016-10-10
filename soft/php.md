@@ -1,4 +1,4 @@
-#新建php用户和php组
+#新建www用户和www组
 groupadd -r php && useradd -r -g php -s /bin/false -d /usr/local/php7 -M php
 
 #安装编译php7时需要的依赖包

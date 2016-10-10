@@ -18,7 +18,7 @@ mkdir -p /usr/local/nginx
 --prefix=/usr/local/nginx \
 --error-log-path=/var/log/nginx/error.log \
 --http-log-path=/var/log/nginx/access.log \
---pid-path=/var/run/nginx/nginx.pid  \
+--pid-path=/var/run/nginx.pid  \
 --lock-path=/var/lock/nginx.lock \
 --user=nginx \
 --group=nginx \
