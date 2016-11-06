@@ -41,7 +41,7 @@ vi /etc/my.cnf
 [mysqld]中添加：
  
 basedir = /usr/local/mysql
-datadir = /usr/local/mysql/data
+datadir = /var/data/mysql
 port = 3306
 server_id = 1
 
