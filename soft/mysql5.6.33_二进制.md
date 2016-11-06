@@ -29,7 +29,7 @@ chown -R mysql .
 chgrp -R mysql .
 
 3.6 至此mysql已经安装完了，但还需要初始化，初始化mysql表、test表、infomation表等。
-#./scripts/mysql_install_db --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data
+#./scripts/mysql_install_db --user=mysql --basedir=/usr/local/mysql --datadir=/var/data/mysql
 
 3.7 复制mysql服务启动脚本及加入PATH路径
 cp support-files/mysql.server /etc/init.d/mysqld 
