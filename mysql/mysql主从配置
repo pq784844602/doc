@@ -1,0 +1,21 @@
+1、启用二进制日志
+vim /etc/my.cnf
+log-bin = mysql-bin  			#二进制日志文件，此项为必填项，否则不能同步数据；
+binlog_format = mixed
+expire_logs_days = 7
+server-id = 1  				#这是数据库ID,此ID是唯一的，主库默认为1，其他从库以此ID进行递增，ID值不能重复，否则会同步出错；
+sync_binlog = 1             	 #主从复制时的事务安全
+binlog-do-db = mediaman  		#需要同步的数据库，如果需要同步多个数据库；
+
+2、主服务器---创建同步账号
+grant replication slave on *.* to saas@10.27.176.238 identified by 'Baipeng2017';
+
+3、从服务器配置
+server-id = 2
+
+4、从服务连接Master服务器
+change master to master_host = '10.27.177.46', master_user = 'saas', master_port=3306, master_password='Baipeng2017', master_log_file = 'mysql-bin.000004', master_log_pos=1395;
+
+5、在Slave上面启动复制线程:
+START SLAVE;
+SHOW SLAVE STATUS\G
