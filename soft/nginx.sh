@@ -1,15 +1,13 @@
-#! /bin/bash
+#!/bin/sh
 #
-# nginx - this script starts and stops the nginx daemon
+# nginx - this script starts and stops the nginx daemin
 #
-# chkconfig:   - 85 15
+# chkconfig:   - 85 15 
 # description:  Nginx is an HTTP(S) server, HTTP(S) reverse \
 #               proxy and IMAP/POP3 proxy server
-#
 # processname: nginx
-# config:      /etc/nginx/nginx.conf
-# pidfile:     /var/run/nginx/nginx.pid
-
+# config:      /usr/local/nginx/conf/nginx.conf
+# pidfile:     /var/run/nginx.pid
 # Source function library.
 . /etc/rc.d/init.d/functions
 
@@ -19,12 +17,11 @@
 # Check that networking is up.
 [ "$NETWORKING" = "no" ] && exit 0
 
-nginx="/usr/sbin/nginx"
+nginx="/usr/local/nginx/sbin/nginx"
+
 prog=$(basename $nginx)
 
 NGINX_CONF_FILE="/usr/local/nginx/conf/nginx.conf"
-
-[ -f /etc/sysconfig/nginx ] && . /etc/sysconfig/nginx
 
 lockfile=/var/lock/nginx.lock
 
@@ -51,7 +48,6 @@ stop() {
 restart() {
     configtest || return $?
     stop
-    sleep 1
     start
 }
 
