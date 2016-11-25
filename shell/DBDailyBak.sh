@@ -7,6 +7,10 @@
 BakDir=/data/mysql/backup/daily
 LogFile=/data/mysql/backup/bak.log
 
+if [ ! -d "$BakDir" ];then
+        mkdir -p $BakDir
+fi
+
 BinDir=/var/lib/mysql
 BinFile=/var/lib/mysql/mysql-bin.index
 MYSQLADMIN="/usr/bin/mysqladmin"

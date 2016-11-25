@@ -15,6 +15,9 @@ DBNAME2="messagecenter"
 DBNAME3="usercenter"
 DBNAME4="weiphp"
 
+if [ ! -d "$BakDir" ];then
+	mkdir -p $BakDir
+fi
 DumpFile=$Date.sql
 DumpFile1=$Date$DBNAME1.sql
 DumpFile2=$Date$DBNAME2.sql
@@ -37,7 +40,7 @@ tar czf $GZDumpFile1 $DumpFile1
 tar czf $GZDumpFile2 $DumpFile2
 tar czf $GZDumpFile3 $DumpFile3
 tar czf $GZDumpFile4 $DumpFile4 
-rm $DumpFile1 DumpFile2 DumpFile3 DumpFile4
+rm $DumpFile1 $DumpFile2 $DumpFile3 $DumpFile4
 Last=`date +"%Y年%m月%d日 %H:%M:%S"`
 echo 开始:$Begin 结束:$Last $GZDumpFile succ >> $LogFile
 find $BakDir -name "*.sql.tgz" -type f -mtime +30 -exec rm {} \; > /dev/null 2>&1
