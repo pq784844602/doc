@@ -1,0 +1,28 @@
+#
+#MAINTAINER        Joson
+#DOCKER-VERSION    1.0.0
+#
+#docker-compose up -d
+#
+db:
+  build: ./mysql
+  volumes:
+    - /usr/local/mysql/data:/var/lib/mysql
+web:
+  build: ./php
+  volumes:
+    - /var/www:/var/www/html
+  links:
+    - db
+service:
+  image: nginx
+  volumes:
+    - /usr/local/nginx/conf.d:/etc/nginx/conf.d
+  ports:
+    - "80:80"
+  volumes_from:
+    - web
+  links:
+    - web
+
+  

@@ -89,5 +89,13 @@ mysql> FLUSH PRIVILEGES;
 两者选一;
 
 
-问题：
+问题：1 
+命令：./scripts/mysql_install_db --user=mysql --basedir=/usr/local/mysql --datadir=/var/data/mysql
+ 
+错误 ：FATAL ERROR: please install the following Perl modules before executing ./scripts/mysql_install_db:
 
+解决 ：yum install -y perl-Module-Install.noarch
+
+错误 ：Installing MySQL system tables.../usr/local/mysql/bin/mysqld: error while loading shared libraries: libaio.so.1: cannot open shared object file: No such file or directory
+
+解决 ：yum install -y libaio 
