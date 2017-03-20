@@ -44,3 +44,8 @@ bin/zkServer.sh start
 6、启动mycat eye
 start.sh &
 
+
+7、自动启动mycat
+vi  /etc/rc.local 
+添加 /usr/local/mycat/bin/mycat start
+
