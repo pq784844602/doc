@@ -57,7 +57,8 @@ chkconfig --level 35 mysqld on
 ps -ef|grep 3306  
 
 4.11 修改MySQL用户root的密码
-mysql -u root -p   
+
+  
 mysql> SELECT user,host,password FROM mysql.user;
 +------+-----------+----------+
 | user | host      | password |

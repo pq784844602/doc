@@ -1,5 +1,5 @@
 #新建www用户和www组
-groupadd -r php && useradd -r -g php -s /bin/false -d /usr/local/php7 -M php
+groupadd -r php && useradd -r -g php -s /bin/false -d /usr/local/php -M php
 
 #安装编译php7时需要的依赖包
 yum -y install libxml2 libxml2-devel openssl openssl-devel curl-devel libjpeg-devel libpng-devel freetype-devel libmcrypt-devel
